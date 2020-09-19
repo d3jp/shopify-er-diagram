@@ -1,0 +1,52 @@
+@startuml
+
+/'
+  図の中で目立たせたいエンティティに着色するための
+  色の名前（定数）を定義します。
+'/
+!define MAIN_ENTITY #E2EFDA-C6E0B4
+!define MAIN_ENTITY_2 #FCE4D6-F8CBAD
+skinparam backgroundColor #f4f6f8
+/' 他の色も、用途が分りやすいように名前をつけます。 '/
+!define METAL #F2F2F2-D9D9D9
+!define MASTER_MARK_COLOR AAFFAA
+!define TRANSACTION_MARK_COLOR FFAA00
+!define BORDER_COLOR 1C2260
+!define CARDBG_COLOR FFFFFF
+!define ARROW_COLOR DFE3E8
+
+/'
+  デフォルトのスタイルを設定します。
+  この場合の指定は class です。entity ではエラーになります。
+'/
+skinparam class {
+    BackgroundColor CARDBG_COLOR
+    BorderColor BORDER_COLOR
+    ArrowColor BORDER_COLOR
+}
+
+
+package "Product - Variant - Inventory - Location" as target_system {
+    /'
+    Comment here
+     '/
+
+
+    entity "Products：商品" as product <<M,MASTER_MARK_COLOR>> {
+        + product_id [PK]
+        --
+        title：商品名
+    }
+    
+    entity "Variants：バリエーション" as variant <<M,MASTER_MARK_COLOR>> {
+        + variant_id [PK]
+        --
+        name：
+    }
+    
+    product -{ variant 
+    
+    
+}
+
+@enduml
